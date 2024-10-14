@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <math.h>
+#include <windows.h>
 
 void printVariables(float a, float b, float c) {
     if (fabs(a) >= 100000 || fabs(b) >= 100000 || fabs(c) >= 100000) {
@@ -10,11 +11,14 @@ void printVariables(float a, float b, float c) {
 }
 
 int main() {
+    SetConsoleCP(65001); //set input encoding to UTF-8
+    SetConsoleOutputCP(65001); //set output encoding to UTF-8
+
     // Task 1
-    printf("Andriy\nKachmar\nIhorovych\n+380980362126\n");
+    printf("Andrii\nKachmar\nIhorovych\n+380980362126\n");
 
     // Task 2
-    printf("Lorem ipsum dolor sit amet,\nConsectetur adipiscing elit.\nSed do eiusmod tempor incididunt,\nUt labore et dolore magna aliqua.\n\nLorem Ipsum\n");
+    printf("І на оновленій землі\nВрага не буде, супостата,\nА буде син і буде мати,\nІ будуть люди на землі…\n\nТ. Г. Шевченко\n");
 
     // Task 3
     float u, r;
