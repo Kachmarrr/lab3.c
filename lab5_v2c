@@ -21,20 +21,47 @@ int main() {
     printf("Вартість поїздки: %.2f грн.\n\n", tripCost);
 
     // Task 2: Deposit income calculation
-    float depositAmount, interestRate, income, totalAmount;
-    int depositPeriod;
-    printf("Обчислення доходу за вкладом\n");
-    printf("Сума вкладу (грн.) -> ");
-    scanf("%f", &depositAmount);
-    printf("Термін вкладу (місяців) -> ");
-    scanf("%d", &depositPeriod);
-    printf("Відсоткова ставка (річних) -> ");
-    scanf("%f", &interestRate);
-    income = depositAmount * (interestRate / 100) * (depositPeriod / 12.0);
-    totalAmount = depositAmount + income;
-    printf("-------------------------------------\n");
-    printf("Прибуток: %.2f грн.\n", income);
-    printf("Сума після закінчення терміну вкладу: %.2f грн.\n\n", totalAmount);
+    double deposit, annual_rate, total_earnings;
+    int months;
+
+    // Запитуємо у користувача дані
+    printf("Введіть суму внеску: ");
+    scanf("%lf", &deposit);
+
+    printf("Введіть кількість місяців: ");
+    scanf("%d", &months);
+
+    printf("Введіть річну процентну ставку: ");
+    scanf("%lf", &annual_rate);
+
+    // Конвертація річної ставки у десяткове значення
+    annual_rate /= 100;
+
+    // Якщо термін менше або дорівнює 12 місяців
+    if (months <= 12) {
+        total_earnings = deposit + (deposit * annual_rate * (months / 12.0));
+    } else {
+        // Якщо термін більше 12 місяців
+        int full_years = months / 12;
+        int remaining_months = months % 12;
+
+        // Нараховані відсотки за повні роки
+        total_earnings = deposit * pow(1 + annual_rate, full_years);
+
+        // Нарахування відсотків за залишкові місяці
+        total_earnings += total_earnings * annual_rate * (remaining_months / 12.0);
+    }
+
+    // Виведення результату
+    printf("Сума з нарахованими відсотками через %d місяців: %.2f\n", months, total_earnings);
+
+
+
+
+
+
+
+
 
     // Task 3: Time conversion (minutes to hours and minutes)
     int totalMinutes, hours, minutes;
